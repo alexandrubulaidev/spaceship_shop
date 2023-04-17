@@ -37,15 +37,3 @@ final router = GoRouter(
     ),
   ],
 );
-
-// extension ContextRouting on BuildContext {
-//   void popToRoot() {
-//     // Get the current navigation state
-//     final state = Navigator.of(this).restorablePopAndPushNamed('/');
-
-//     // Pop all routes until the root
-//     Navigator.of(this).pushAndRemoveUntil(
-//       router.,
-//     );
-//   }
-// }

@@ -12,8 +12,5 @@ class Application {
     Services.register<AuthService>(AuthService());
     Services.register<SpaceshipRepository>(SpaceshipRepositoryImpl());
     Services.register<ShoppingService>(ShoppingService());
-
-    // initialize components
-    // await Get.find<GameStateService>().init();
   }
 }
