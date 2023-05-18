@@ -47,7 +47,7 @@ class _SegmentControlState extends State<SegmentControl>
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return SizedBox(
       height: widget.height,
       width: widget.width,

@@ -13,8 +13,8 @@ import '../../../utils/logging.dart';
 import '../../../utils/string_utils.dart';
 import '../../dialogs/simple_alert_dialog.dart';
 import '../../dialogs/simple_alert_dialog_templates.dart';
-import '../../widgets/behavior_subject_builder.dart';
 import '../../widgets/checkout_component.dart';
+import '../../widgets/rx_builder.dart';
 import '../../widgets/spaceship_component_widget.dart';
 import 'shop_page_controller.dart';
 
@@ -46,7 +46,7 @@ class _ShopPageState extends State<ShopPage> {
           'Service Ship'.localized,
         ),
       ),
-      body: BehaviorSubjectBuilder(
+      body: RxBuilder(
         subject: controller.state,
         builder: (final context, final value) {
           if (value is ControllerErrored) {
@@ -146,7 +146,7 @@ class _StepperWidget extends StatelessWidget {
   Widget build(final BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
-    return BehaviorSubjectBuilder(
+    return RxBuilder(
       subject: controller.shopState,
       builder: (final context, final value) {
         final index = value?.index ?? 0;
@@ -275,7 +275,7 @@ class _ComponentsShopWidget extends StatelessWidget {
   Widget build(final BuildContext context) {
     final controller = Services.get<ShopPageController>();
 
-    return BehaviorSubjectBuilder(
+    return RxBuilder(
       subject: controller.fetchingComponents,
       builder: (final context, final value) {
         final loading = value ?? true;

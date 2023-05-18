@@ -25,7 +25,7 @@ extension AppErrorDescriptionStrings on AppErrorDescription {
   }
 }
 
-class AppError {
+class AppError implements Exception {
   AppError({
     this.data,
     this.type = AppErrorType.unexpected,

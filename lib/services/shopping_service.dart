@@ -1,12 +1,8 @@
-import '../core/services.dart';
-import '../data/repositories/spaceship_repository.dart';
 import '../model/cart_item.dart';
 
 class ShoppingService {
   final Cart _cart = Cart();
   DateTime _appointmentDate = DateTime.now();
-
-  SpaceshipRepository get _repository => Services.get<SpaceshipRepository>();
 
   // ignore: unnecessary_getters_setters
   DateTime get appointmentDate => _appointmentDate;

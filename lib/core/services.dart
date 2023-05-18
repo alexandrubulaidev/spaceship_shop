@@ -79,6 +79,6 @@ class ServiceInvalidException implements Exception {
   final String message;
 }
 
-class BaseService {
+abstract class BaseService {
   void onDispose() {}
 }

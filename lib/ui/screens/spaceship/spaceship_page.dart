@@ -3,8 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/controller_state.dart';
+import '../../../core/global_obs.dart';
 import '../../../core/services.dart';
-import '../../widgets/behavior_subject_builder.dart';
+import '../../widgets/rx_builder.dart';
 import '../../widgets/spaceship_component_widget.dart';
 import '../../widgets/spaceship_details_widget.dart';
 import 'spaceship_page_controller.dart';
@@ -23,6 +24,22 @@ class _SpaceshipPageState extends State<SpaceshipPage> {
 
   void _shop(final BuildContext context) {
     context.go('/shop');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final state = BaseState<String>('testing');
+    print(state.value);
+    state.listen((event) {
+      print(event);
+    });
+    Future.delayed(Duration(seconds: 1), () {
+      state.value = 'testing2';
+    });
+    Future.delayed(Duration(seconds: 2), () {
+      state.value = 'testing3';
+    });
   }
 
   @override
@@ -45,7 +62,7 @@ class _SpaceshipPageState extends State<SpaceshipPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: BehaviorSubjectBuilder(
+        child: RxBuilder(
           subject: controller.state,
           builder: (final context, final value) {
             if (value is ControllerErrored) {

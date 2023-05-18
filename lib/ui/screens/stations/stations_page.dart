@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -14,10 +13,9 @@ import '../../../utils/date_extensions.dart';
 import '../../../utils/string_utils.dart';
 import '../../dialogs/simple_alert_dialog.dart';
 import '../../dialogs/simple_alert_dialog_templates.dart';
-import '../../widgets/behavior_subject_builder.dart';
-import '../../widgets/segmented_control.dart';
-import '../../widgets/spaceship_details_widget.dart';
 import '../../widgets/online_image.dart';
+import '../../widgets/rx_builder.dart';
+import '../../widgets/segmented_control.dart';
 import 'stations_page_controller.dart';
 
 class StationsPage extends StatefulWidget {
@@ -106,7 +104,7 @@ class _StationsPageState extends State<StationsPage> {
           'Select Repair Station'.localized,
         ),
       ),
-      body: BehaviorSubjectBuilder(
+      body: RxBuilder(
         subject: controller.state,
         builder: (final context, final value) {
           if (value is ControllerErrored) {
@@ -237,7 +235,7 @@ class _StationList extends StatelessWidget {
   Widget build(final BuildContext context) {
     final controller = Services.get<StationsPageController>();
 
-    return BehaviorSubjectBuilder(
+    return RxBuilder(
       subject: controller.fetchingStations,
       builder: (final context, final value) {
         final loading = value ?? true;
@@ -246,7 +244,7 @@ class _StationList extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return BehaviorSubjectBuilder(
+        return RxBuilder(
           subject: controller.stations,
           builder: (final context, final value) {
             final stations = value ?? [];

@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:rxdart/rxdart.dart';
-
 import '../../../core/controller_state.dart';
 import '../../../core/services.dart';
 import '../../../data/repositories/spaceship_repository.dart';
