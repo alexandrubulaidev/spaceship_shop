@@ -1,4 +1,5 @@
 import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../model/spaceship.dart';
 import '../../model/spaceship_component.dart';
@@ -11,10 +12,14 @@ class Database {
   Database._({required final Isar isar}) : _isar = isar;
 
   static Future<Database> create() async {
-    final isar = await Isar.open([
-      SpaceshipSchema,
-      SpaceshipComponentSchema,
-    ]);
+    final directory = await getApplicationDocumentsDirectory();
+    final isar = await Isar.open(
+      [
+        SpaceshipSchema,
+        SpaceshipComponentSchema,
+      ],
+      directory: directory.path,
+    );
     return Database._(isar: isar);
   }
 

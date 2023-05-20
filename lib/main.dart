@@ -6,6 +6,7 @@ import 'ui/themes.dart';
 void main() async {
   // Practically we'll want to create a loader screen and await for this to complete.
   // A problem for another time.
+  WidgetsFlutterBinding.ensureInitialized();
   await Application.init();
 
   runApp(MyApp());
